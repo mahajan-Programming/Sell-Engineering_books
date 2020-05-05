@@ -1,1 +1,117 @@
-<h1>hi im am shreays pransy mahajan</h1>
+{%block body%}
+
+<html>
+<head>
+	<title>The Great Getaway</title>
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="app.css">
+	
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">BuyAndSell</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{% url 'index'%}">Home</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+        </ul>
+        
+      
+      <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+        <li><a href="{%url 'logout'%}">logout <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+        {% else %}
+        <li><a href="{%url 'registerform'%}">Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+        <li><a href="{%url 'loginform'%}">Login <i class="fa fa-user" aria-hidden="true"></i></a></li>
+        {%endif%}
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="content">
+				<h1>Take A Vacation</h1>
+			<h3>You've worked too hard this year.</h3>
+			<hr>
+			<button class="btn btn-default btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> I deserve it.</button>
+			</div>
+			
+		</div>
+	</div>	
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://use.fontawesome.com/5fdc450c1b.js"></script>
+</body>
+</html>
+
+{%endblock body%}
+
+{%block style%}
+<style>
+
+    body {
+        background: url("https://static.pexels.com/photos/413960/pexels-photo-413960.jpeg");
+        background-size: cover;
+        background-position: center;
+        font-family: 'Lato', sans-serif;
+        color: #fff;
+    }
+    
+    html  {
+        height: 100%;
+    }
+    
+    h1 {
+        font-weight: 680;
+        font-size: 5em;
+    }
+    
+    /*Line above the button*/
+    hr {
+        width: 400px;
+        border-top: 1px solid #42c8f4;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
+    
+    /*Put in for slight drop shadow effect*/
+    #content {
+        text-align: center;
+        padding-top: 25%;
+        text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                     0px 8px 13px rgba(0,0,0,0.1),
+                     0px 18px 23px rgba(0,0,0,0.1);
+    }
+
+</style>
+{%endblock style%}
+
+
+
+{%block script%}
+
+{%endblock script%}
