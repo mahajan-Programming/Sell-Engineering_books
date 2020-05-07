@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+{%block head%}
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Download Cards // Responsive Grid &amp; List View Switcher</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+{%endblock head%}
+{%block style%}
+<style>
+body {
+  background-color: #e8e8e8;
+  font-family: 'proxima nova';
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.clearfix {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3em 1em;
+}
+
+.download-cards {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.download-card {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  width: calc(100% - 2em);
+  background: #fbfbfb;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2em;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid #d2d2d2;
+  border-left: 1px solid #dadada;
+  margin: 0 1em 2em 1em;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view='grid-view'] .download-card {
+    float: left;
+    width: calc( 50% - 2em );
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(3) {
+    clear: both;
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(4) {
+    clear: initial;
+  }
+}
+@media (min-width: 1000px) {
+  .download-cards[data-view='grid-view'] .download-card {
+    width: calc( (100% / 3) - 2em );
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(3) {
+    clear: initial;
+  }
+  .download-cards[data-view='grid-view'] .download-card:nth-child(4) {
+    clear: both;
+  }
+}
+.download-card__icon-box {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  background: #f1f1f1;
+  padding: 2em;
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .download-card__icon-box {
+    -webkit-box-pack: center;
+            justify-content: center;
+  }
+}
+.download-card__icon-box img {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view='list-view'] .download-card__icon-box {
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-right: 1px solid #e6e6e6;
+  }
+}
+.download-card__content-box {
+  padding: 2em 2em 3em;
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+@media (min-width: 700px) {
+  .download-cards[data-view="list-view"] .download-card__content-box {
+    padding-left: calc(200px + 2em);
+  }
+}
+.download-card__content-box__catagory {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin: 0 0 2em;
+}
+.download-card__content-box__catagory::before {
+  content: '| ';
+  color: #ff4500;
+}
+.download-card__content-box__title {
+  line-height: 1;
+  margin: 0 0 .5em;
+  font-size: 18px;
+}
+.download-card__content-box__description {
+  line-height: 1.5;
+  padding: 0;
+  margin: 0 0 1em;
+  clear: both;
+  color: #929292;
+  font-size: 16px;
+}
+.download-card__content-box .button {
+  position: absolute;
+  bottom: 2em;
+  margin: 0;
+  color: #ff4500;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.dc-view-switcher {
+  display: none;
+  margin: 1em;
+  text-align: right;
+}
+@media (min-width: 700px) {
+  .dc-view-switcher {
+    display: block;
+  }
+}
+.dc-view-switcher > button {
+  font-family: 'fontAwesome';
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  vertical-align: middle;
+  color: gray;
+  opacity: 0.3;
+  outline: none;
+  -webkit-transition: opacity .4s ease;
+  transition: opacity .4s ease;
+}
+.dc-view-switcher > button[data-trigger="list-view"]::before {
+  content: "\f00b";
+}
+.dc-view-switcher > button[data-trigger="grid-view"]::before {
+  content: "\f009";
+}
+.dc-view-switcher > button[data-trigger].active {
+  opacity: 1;
+}
+</style>
+{%endblock style%}
+{%block body%}
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="container">
+    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    <div id="myDIV">
+  <div class="dc-view-switcher">
+    <button data-trigger="grid-view"></button>
+    <button data-trigger="list-view" class="active"></button>
+  </div>
+  <div data-view="list-view" class="download-cards">
+    <article class="download-card">
+      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">{{branch}}</h2>
+          <h3 class="download-card__content-box__title">Tool{{branch}} Safety Products</h3>
+          <p class="download-card__content-box__description">High & low-res photos for print and web media. </p>
+          <a class="button"> <i class="fa fa-cloud-download"></i> Download</a>
+        </div>
+      </div>
+    </article>
+    <article class="download-card">
+      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">PDF{{sem}}</h2>
+          <h3 class="download-card__content-box__title">Tool Safety Catalogues</h3>
+          <p class="download-card__content-box__description">Print and web ready PDF's. </p>
+          <a class="button"> <i class="fa fa-cloud-download"></i> Download</a>
+        </div>
+      </div>
+    </article>
+    <article class="download-card">
+      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">Photos</h2>
+          <h3 class="download-card__content-box__title">Height Safety Products</h3>
+          <p class="download-card__content-box__description">High & low-res photos for print and web media. </p>
+          <a class="button"> <i class="fa fa-cloud-download"></i> Download</a>
+        </div>
+      </div>
+    </article>
+    <article class="download-card">
+      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">Document</h2>
+          <h3 class="download-card__content-box__title">Course Booking Form</h3>
+          <p class="download-card__content-box__description">Word document </p>
+          <a class="button"> <i class="fa fa-cloud-download"></i> Download</a>
+        </div>
+      </div>
+    </article>
+    <article class="download-card">
+      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__content-box">
+        <div class="content">
+          <h2 class="download-card__content-box__catagory">Photos</h2>
+          <h3 class="download-card__content-box__title">Height Safety Products</h3>
+          <p class="download-card__content-box__description">High & low-res photos for print and web media. </p>
+          <a class="button"> <i class="fa fa-cloud-download"></i> Download</a>
+        </div>
+      </div>
+    </article>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script><script  src="./script.js"></script>
+
+</body>
+{%endblock body%}
+{%block script%}
+<script>
+var downloadGrid = (function(){
+  
+  "use strict";
+  
+  var $cardContainer = $('.download-cards');
+  var $downloadCard  = $('.download-card__content-box');
+  var $viewTrigger   = $('button').attr('data', 'trigger');
+
+  function swapTriggerActiveClass(e) {   
+    $viewTrigger.removeClass('active');
+    $(e.target).addClass('active');
+  }
+
+  function swapView(e) {
+    var $currentView = $(e.target).attr('data-trigger');
+    $cardContainer.attr('data-view', $currentView);
+  }
+
+  $(document).ready(function(){
+    // Event Listener
+    $viewTrigger.click(function(e){
+      swapTriggerActiveClass(e);
+      swapView(e);        
+    });  
+  });
+  
+})();
+
+
+
+
+
+      
+    //search code
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myDIV *").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+</script>
+{%endblock script%}
+</html>

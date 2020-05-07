@@ -1,117 +1,194 @@
 {%block body%}
-
-<html>
-<head>
-	<title>The Great Getaway</title>
-	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="app.css">
-	
-</head>
-<body>
-
-<nav class="navbar navbar-default">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">BuyAndSell</a>
+<div class="nav">
+  <input type="checkbox" id="nav-check">
+  <div class="nav-header">
+    <div class="nav-title">
+      Buy&Sell
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="{% url 'index'%}">Home</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">Contact</a></li>
-        </ul>
-        
-      
-      <ul class="nav navbar-nav navbar-right">
-        {% if user.is_authenticated %}
-        <li><a href="{%url 'logout'%}">logout <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
-        {% else %}
-        <li><a href="{%url 'registerform'%}">Sign Up <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
-        <li><a href="{%url 'loginform'%}">Login <i class="fa fa-user" aria-hidden="true"></i></a></li>
-        {%endif%}
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-<div class="container">
-	<div class="row">
-		<div class="col-lg-12">
-			<div id="content">
-				<h1>Take A Vacation</h1>
-			<h3>You've worked too hard this year.</h3>
-			<hr>
-			<button class="btn btn-default btn-lg"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> I deserve it.</button>
-			</div>
-			
-		</div>
-	</div>	
+  </div>
+  <div class="nav-btn">
+    <label for="nav-check">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+  
+  <div class="nav-links">
+    <a href="//github.io/jo_geek" target="_blank">Github</a>
+    <a href="http://stackoverflow.com/users/4084003/" target="_blank">Stackoverflow</a>
+    {% if user.is_authenticated %}
+    <a href="{%url 'logout'%}" >Logout</a>
+    {%else%}
+    <a href="{%url 'registerform'%}"  >Register</a>
+    <a href="{%url 'loginform' %}" >Login</a>
+    {%endif %}
+  </div>
 </div>
 
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
-
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://use.fontawesome.com/5fdc450c1b.js"></script>
-</body>
-</html>
-
+<div class="container">
+  <a href="{%url 'searchbooks'%}"><button class="follow-button">Search Books</button></a>
+  <button class="subscribe-button">Sell Books</button>
+</div>
 {%endblock body%}
-
 {%block style%}
 <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  button {
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 18px 30px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.15);
+    transition: 0.25s;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 24px;
+  }
+  
+  button:hover {
+    box-shadow: 0px 5px 8px rgba(0, 0, 0, 0.18);
+    transform: translateY(-2px);
+    transition: 0.25s;
+  }
+  
+  .follow-button {
+    background-color: rgb(20, 20, 20);
+    color: white;
+  }
+  
+  .subscribe-button {
+    background-color: white;
+    color: rgb(20, 20, 20);
+  }
+  
 
-    body {
-        background: url("https://static.pexels.com/photos/413960/pexels-photo-413960.jpeg");
-        background-size: cover;
-        background-position: center;
-        font-family: 'Lato', sans-serif;
-        color: #fff;
-    }
-    
-    html  {
-        height: 100%;
-    }
-    
-    h1 {
-        font-weight: 680;
-        font-size: 5em;
-    }
-    
-    /*Line above the button*/
-    hr {
-        width: 400px;
-        border-top: 1px solid #42c8f4;
-        border-bottom: 1px solid rgba(0,0,0,0.2);
-    }
-    
-    /*Put in for slight drop shadow effect*/
-    #content {
-        text-align: center;
-        padding-top: 25%;
-        text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
-                     0px 8px 13px rgba(0,0,0,0.1),
-                     0px 18px 23px rgba(0,0,0,0.1);
-    }
 
+
+
+
+
+
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0px;
+    font-family: 'segoe ui';
+  }
+  
+  .nav {
+    height: 50px;
+    width: 100%;
+    background-color: #4d4d4d;
+    position: relative;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 22px;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 18px;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 13px 10px 13px 10px;
+    text-decoration: none;
+    color: #efefef;
+  }
+  
+  .nav > .nav-links > a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: #333;
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 50px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  
 </style>
 {%endblock style%}
 
 
-
 {%block script%}
+<script>
 
+
+  
+</script>
 {%endblock script%}

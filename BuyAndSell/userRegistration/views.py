@@ -16,7 +16,7 @@ def register(response):
 	    if form.is_valid():
 	        form.save()
 
-	    return redirect("/home")
+	    return redirect("index")
     else:
 	    form = RegisterForm()
 
@@ -44,3 +44,19 @@ def NewBookForm(request):
         return redirect('index')
 
     return render(request,"NewBook.html",{'new':new})
+
+def Test(request):
+    if request.method=='POST':
+        branch=request.POST.get('branch')
+        sem=request.POST.get('sem')
+        return render(request,"newcardpage.html",{'branch':branch,'sem':sem})
+    return render(request,"newsearchpage.html",{})
+
+def books(request):
+    return render(request,"bookscardpage.html",{})
+
+def newbooks(request):
+    return render(request,"newcardpage.html",{})
+
+def NewSearch(request):
+    return render(request,"newsearchpage.html",{})
