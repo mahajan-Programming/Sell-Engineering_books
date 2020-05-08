@@ -16,7 +16,6 @@ class RegisterForm(UserCreationForm):
 class UserInfoForm(ModelForm):
     class Meta:
         model= UserPersonalInfo
-        # fields=['BookName','Price','Year','Tag1','Tag2','BookImage']
         fields=['PhoneNo','City','Institute','SubUrb']
             
         
@@ -29,4 +28,4 @@ class UserNewBook(ModelForm):
         labels = {
             'Year':"Book's Publish Year ?",
             'Tag1': "Book's Branch ?"         
-            }   
+            }

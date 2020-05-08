@@ -41,6 +41,6 @@ class NewBook(models.Model):
     Year=models.CharField(max_length=10,default="")
     Tag1=models.CharField(max_length=50,choices=branch,default="")
     Tag2=models.CharField(max_length=15,choices=semister,default="")
-    BookImage = models.ImageField(blank=True)
+    BookImage = models.ImageField(blank=True, upload_to='books')
     def __str__(self):
         return str(self.pk) + '. ' + self.BookOwner.username.username+ ' ' + self.BookName

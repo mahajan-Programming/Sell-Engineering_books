@@ -1,9 +1,11 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from django.conf import settings
 
+from django.conf.urls.static import static
 
 from . import views 
-from userRegistration.views import index,register,userInfoFrom,NewBookForm,Test,books,newbooks,NewSearch
+from userRegistration.views import index,register,userInfoFrom,NewBookForm,Test,books,newbooks,NewSearch,sellerDashBoard
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -14,5 +16,9 @@ urlpatterns = [
     path('newbook/',views.NewBookForm,name="newbookform"),
     path('searchbooks/',views.Test,name="searchbooks"),
     path('books/',views.books,name="search"),
-    path('newbooks/',views.newbooks,name="newbooks")
+    path('newbooks/',views.newbooks,name="newbooks"),
+    path('sellerdash/',views.sellerDashBoard,name="sellerdash")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

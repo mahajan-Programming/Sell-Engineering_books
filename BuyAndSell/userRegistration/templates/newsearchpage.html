@@ -1,4 +1,5 @@
 {%block body%}
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -11,10 +12,10 @@
     <select name="branch" class="cs-select cs-skin-elastic">
       <option value="" disabled selected>Select Branch</option>
       <option value="First Year">First Year</option>
-      <option value="CSE">CSE</option>
-      <option value="IT">IT</option>
-      <option value="Entc">Entc</option>
-      <option value="Mech">Mech</option>
+      <option value="CSE">Computer Science</option>
+      <option value="IT">Information Technology</option>
+      <option value="Entc">Electronics Engineering</option>
+      <option value="Mech">Mechanical Engineering</option>
       <option value="Instrumentation">Instrumentation</option>
       <option value="Production">Production</option>
       <option value="Chemical">Chemical</option>
@@ -34,13 +35,19 @@
       <option value="Sem8">Sem8</option>
     </select>
   </div>
-  <button type="submit"  class="btn btn-info">Get Books</button>
-</form>
+  <br>
+  <div class="text-center">
+    <button type="submit" class="btn btn-info btn-lg btn-block">Get Books</button>
+  </div></form>
 {%endblock body%}
 {%block style%}
 <style>
     body {
-        background-color: #E2ECF9;
+        background-image: url('https://www.freevector.com/uploads/vector/preview/30374/Colorful-Plait-Background.jpg');
+        background-size: 1300px 600px;
+
+        background-repeat: no-repeat;
+
       }
       /* Default custom select styles */
       .text__center{

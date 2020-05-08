@@ -35,7 +35,7 @@ def userInfoFrom(request):
 
 @login_required
 def NewBookForm(request):
-    new = UserNewBook(request.POST)
+    new = UserNewBook(request.POST,request.FILES)
     if request.method == 'POST':
         n=  new.save(commit=False)
         current_user= UserPersonalInfo.objects.get(username=request.user)
@@ -60,3 +60,6 @@ def newbooks(request):
 
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
+
+def sellerDashBoard(request):
+    return render(request,"sellerdashboard.html",{})
