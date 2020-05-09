@@ -98,3 +98,6 @@ def FileForm(request):
         return redirect('index')
 
     return render(request,"FileForm.html",{'new':new})
+
+def ShowFileFolder(request):
+    return render(request,"FileFolder.html",{})
