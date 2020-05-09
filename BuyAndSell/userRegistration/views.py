@@ -61,5 +61,7 @@ def newbooks(request):
 def NewSearch(request):
     return render(request,"newsearchpage.html",{})
 
+
+@login_required
 def sellerDashBoard(request):
     return render(request,"sellerdashboard.html",{})

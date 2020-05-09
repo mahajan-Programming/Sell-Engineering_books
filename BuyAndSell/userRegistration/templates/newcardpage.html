@@ -12,6 +12,121 @@
 {%endblock head%}
 {%block style%}
 <style>
+
+
+
+
+  h2 {
+    position: relative;
+    z-index: 2;
+    padding: 0.5em 1em;
+  }
+  
+  @keyframes hide {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+  
+  @keyframes show {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  h2::before, h2::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    content: '';
+  }
+  
+  h2::before {
+    background: #f7872c;
+    z-index: -1;
+    width: 0;
+  }
+  
+  h2::after {
+    background: #e9ad0a4b;
+    width: 100%;
+  }
+  
+  h2.show::before {
+    animation: show 3s .3s forwards cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  h2.show::after {
+    animation: hide 1.7s forwards cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  
+  button {
+    background: none;
+    border: 1px solid currentColor;
+    padding: 1em 2em;
+    margin-top: 2em;
+    font-weight: 100;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    color: hsl(0,0%, 80%);
+    transition: all .25s ease;
+  }
+  
+  button:hover {
+    color: hsl(0,0%, 50%);
+  }
+
+
+
+
+
+
+
+
+  div.scrollmenu {
+    overflow: auto;
+    white-space: nowrap;
+    
+  }
+  
+  div.scrollmenu a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   background-color: #e8e8e8;
   font-family: 'proxima nova';
@@ -196,8 +311,25 @@ body {
 {%block body%}
 <body>
 <!-- partial:index.partial.html -->
-
 <div class="container">
+  <h2 class="show">Branch & Semister</h2>
+  <div class="scrollmenu">
+  <button>Computer Science</button>
+  <button>Information Technology</button>
+  <button>Electronics</button>
+  <button>Mechanical</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+  <button>Production</button>
+
+  </div>
+
     <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
     <div id="myDIV">
   <div class="dc-view-switcher">
