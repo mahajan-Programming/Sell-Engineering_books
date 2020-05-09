@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import UserPersonalInfo,NewBook
+from .models import UserPersonalInfo,NewBook,Calc,WorkShopUniForm,File
 from django.forms import ModelForm
 
 
@@ -29,3 +29,18 @@ class UserNewBook(ModelForm):
             'Year':"Book's Publish Year ?",
             'Tag1': "Book's Branch ?"         
             }
+
+class AddCalc(ModelForm):
+    class Meta:
+        model = Calc
+        fields = ['CalcPic','price','modelName']
+
+class AddWorkshopUni(ModelForm):
+    class Meta:
+        model = WorkShopUniForm
+        fields = ['image','size','price']
+
+class AddFile(ModelForm):
+    class Meta:
+        model=File
+        fields=['pdf','Name','Branch','Semister','Type','Unit']
