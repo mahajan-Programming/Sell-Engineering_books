@@ -1,3 +1,5 @@
+{%load static%}
+
 {%block body%}
 <!DOCTYPE html>
 <html lang="en" >
@@ -9,6 +11,12 @@
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'><link rel="stylesheet" href="./style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -72,105 +80,28 @@
 <div class="container">
 
 	<div class="cards">
+    {%for book in books%}
 		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/animals);">
+      <img media src="/media/{{book.BookImage}}"/>
+			<span class="card-header" >
 				<span class="card-title">
-					<h3>This is a title for a card</h3>
+					<h3>{{book.BookName}}, Rs.{{book.Price}}</h3>
 				</span>
 			</span>
 			<span class="card-summary">
-				A summary will also be present. Usually two to three brief sentences about the content on the detail page.
+        You are trying to Sell this Book....<br>
+        <b>note: </b>If this book is sold then please Click On <u>SOLD BUTTON</u><br>
+        OtherWise, The Buyers may contact you..<br><br>
+
+        <button type="button" class="btn btn-primary btn-lg">Sold</button>
             </span>
             
 			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
+        {{book.Tag1}}, {{book.Tag2}}
+      </span>
 		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/640/480/nature);">
-				<span class="card-title">
-					<h3>This is a title for a card that is a bit longer in length</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Each card is created from an &lt;a&gt; tag so the whole card is linked.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
+      {%endfor%}
 		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/400/people)">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/tech);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				A summary will also be present. Usually two to three brief sentences about the content on the detail page.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/200/people);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Each card is created from an &lt;a&gt; tag so the whole card is linked.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-		
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/250/nature);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
-		<a class="card" href="#">
-			<span class="card-header" style="background-image: url(http://placeimg.com/400/250/animals);">
-				<span class="card-title">
-					<h3>This is a title for a card</h3>
-				</span>
-			</span>
-			<span class="card-summary">
-				A summary will also be present. Usually two to three brief sentences about the content on the detail page.
-			</span>
-			<span class="card-meta">
-				Published: June 18th, 2015
-			</span>
-		</a>
-
 		<a class="card" href="#">
 			<span class="card-header" style="background-image: url(http://placeimg.com/600/600/people);">
 				<span class="card-title">
@@ -181,7 +112,7 @@
 				Each card is created from an &lt;a&gt; tag so the whole card is linked.
 			</span>
 			<span class="card-meta">
-				Published: June 18th, 2015
+				
 			</span>
 		</a>
 
@@ -192,6 +123,7 @@
 				</span>
 			</span>
 			<span class="card-summary">
+
 				Using Flexbox is such a an easy, well supported way for grid-style content, such as cards. The cards height will expand to match the longest item.
 			</span>
 			<span class="card-meta">
@@ -318,7 +250,7 @@
       }
       .card .card-header {
         position: relative;
-        height: 175px;
+        height: 45px;
         overflow: hidden;
         background-repeat: no-repeat;
         background-size: cover;

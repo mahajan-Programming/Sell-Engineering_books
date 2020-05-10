@@ -49,7 +49,8 @@ def Test(request):
     if request.method=='POST':
         branch=request.POST.get('branch')
         sem=request.POST.get('sem')
-        return render(request,"newcardpage.html",{'branch':branch,'sem':sem})
+        books =  NewBook.objects.filter(Tag1=branch,Tag2=sem)
+        return render(request,"newcardpage.html",{'books':books})
     return render(request,"newsearchpage.html",{})
 
 def books(request):
@@ -64,7 +65,9 @@ def NewSearch(request):
 
 @login_required
 def sellerDashBoard(request):
-    return render(request,"sellerdashboard.html",{})
+    current_user = UserPersonalInfo.objects.get(username = request.user)
+    current_user_books =  NewBook.objects.filter(BookOwner = current_user)
+    return render(request,"sellerdashboard.html",{'books':current_user_books})
 
 
 def CalcForm(request):

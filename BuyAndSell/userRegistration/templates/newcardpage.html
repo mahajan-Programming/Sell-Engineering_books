@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 {%block head%}
 <html lang="en" >
@@ -202,7 +203,7 @@ body {
   -webkit-box-align: center;
           align-items: center;
   background: #f1f1f1;
-  padding: 2em;
+  padding: 0em;
   text-align: center;
 }
 @media (min-width: 700px) {
@@ -336,34 +337,22 @@ body {
     <button data-trigger="grid-view"></button>
     <button data-trigger="list-view" class="active"></button>
   </div>
+  {%for book in books%}
   <div data-view="list-view" class="download-cards">
     <article class="download-card">
-      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
+      <div class="download-card__icon-box"><img media src="/media/{{book.BookImage}}" /></div>
       <div class="download-card__content-box">
         <div class="content">
-          <h2 class="download-card__content-box__catagory">Tag1 & Tag2</h2>
-          <h3 class="download-card__content-box__title">Book Name, Publisher <b>200 Rs.<b></h3>
-          <p class="download-card__content-box__description">Institute , SubUrb, City</p>
-          <a  href="tel:7709559035" class="button"> <i class="fa fa-cloud-download"></i> Call 7709559035</a>
-        </div>
-      </div>
-    </article>
-    
-    
-    </div>
-     <div data-view="list-view" class="download-cards">
-    <article class="download-card">
-      <div class="download-card__icon-box"><img src="https://bytesizemoments.com/wp-content/uploads/2014/04/placeholder3.png" /></div>
-      <div class="download-card__content-box">
-        <div class="content">
-          <h2 class="download-card__content-box__catagory">Tag1 & Tag2</h2>
-          <h3 class="download-card__content-box__title">Book Name  <b>200 Rs.<b></h3>
-          <p class="download-card__content-box__description">Institute , SubUrb, City</p>
-          <a class="button"> <i class="fa fa-cloud-download"></i> Call 7709559035</a>
+          <h2 class="download-card__content-box__catagory">{{book.Tag1}} & {{book.Tag2}}</h2>
+          <h3 class="download-card__content-box__title">{{book.BookName}}, Publisher <b>{{book.Price}}<b></h3>
+          <p class="download-card__content-box__description">{{book.BookOwner.Institute}}, {{book.BookOwner.SubUrb}}, {{book.BookOwner.City}}</p>
+          <a  href="tel:{{book.BookOwner.PhoneNo}}" class="button"> <i class="fa fa-cloud-download"></i> Call {{book.BookOwner.PhoneNo}}</a>
         </div>
       </div>
     </article>
     </div>
+    {%endfor%}
+    
   </div>
 </div>
 <!-- partial -->
