@@ -101,7 +101,7 @@ class File(models.Model):
         ('Unit-6','Unit-6'),
     )
     pdf = models.FileField(max_length=200,upload_to='books')
-    Name = models.CharField(max_length=40)
+    Subject_and_Topic = models.CharField(max_length=40)
     Branch = models.CharField(max_length=40,choices=branch)
     Semister = models.CharField(max_length=40,choices=semister)
     Type = models.CharField(max_length=40,choices=type)

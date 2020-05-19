@@ -43,4 +43,4 @@ class AddWorkshopUni(ModelForm):
 class AddFile(ModelForm):
     class Meta:
         model=File
-        fields=['pdf','Name','Branch','Semister','Type','Unit']
+        fields=['pdf','Subject_and_Topic','Branch','Semister','Type','Unit']

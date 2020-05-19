@@ -313,22 +313,11 @@ body {
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
-  <h2 class="show">Branch & Semister</h2>
+  <h2 class="show">{{b}} __ {{s}}...</h2>
   <div class="scrollmenu">
   <a href="{%url 'unicards'%}"><button>Calculator & Uniform</button></a>
-  <a href="{%url 'filesFolder'%}"><button>File Folder</button></a>
-  <button>Electronics</button>
-  <button>Mechanical</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-  <button>Production</button>
-
+  
+  <a href="{%url 'filesFolder' b%}"><button>Get PDF's</button></a>
   </div>
 
     <!-- <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->

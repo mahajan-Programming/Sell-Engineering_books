@@ -22,7 +22,7 @@ urlpatterns = [
     path('Uniform/',views.Uniform, name="Uniform"),
     path('Uniformcards/',views.UniCard,name="unicards"),
     path('FileForm/',views.FileForm,name="FileForm"),
-    path('ShowFileFolder/',views.ShowFileFolder,name="filesFolder")
+    path('ShowFileFolder/<str:branch>/',views.ShowFileFolder,name="filesFolder")
 ]
 
 if settings.DEBUG:

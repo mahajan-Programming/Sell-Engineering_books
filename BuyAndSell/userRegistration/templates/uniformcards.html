@@ -5,17 +5,38 @@
 
 </head>
 <body>
-
+{%for calc in calculator%}
 <div class="card">
     <div class="card_image">
       <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
     </div>
     <div class="card_content">
-      <h2>Size Price</h2>
-      <h5><a href="tel:7709559035">7709559035</a></h5>
+      <h2>{{calc.modelName}},{{calc.price}}</h2>
+      <h5><a href="tel:{{calc.CalcOwner.PhoneNo}}">7709559035</a></h5>
       <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
     </div>
   </div>
+{%endfor%}
+
+
+
+
+
+
+
+{%for uni in uniform%}
+  <div class="card">
+    <div class="card_image">
+      <img src="https://images.pexels.com/photos/931018/pexels-photo-931018.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 1">
+    </div>
+    <div class="card_content">
+      <h2>{{uni.size}}, {{uni.price}} </h2>
+      <h5><a href="tel:{{uni.CalcOwner.PhoneNo}}">7709559035</a></h5>
+      <p>Seller Name...<br>Area Locality,Institute,Area,City</p>
+    </div>
+  </div>
+{%endfor%}
+
   <div class="card">
     <div class="card_image">
       <img src="https://images.pexels.com/photos/788200/pexels-photo-788200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="card 2">

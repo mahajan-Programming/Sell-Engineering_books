@@ -7,6 +7,7 @@ def index(request):
     return render(request,"index.html",{})
 
 from .forms import RegisterForm,UserInfoForm,UserNewBook,AddCalc,AddWorkshopUni,AddFile
+from userRegistration.models import Calc, File, WorkShopUniForm
 
 
 # Create your views here.
@@ -50,7 +51,7 @@ def Test(request):
         branch=request.POST.get('branch')
         sem=request.POST.get('sem')
         books =  NewBook.objects.filter(Tag1=branch,Tag2=sem)
-        return render(request,"newcardpage.html",{'books':books})
+        return render(request,"newcardpage.html",{'books':books,'b':branch,'s':sem})
     return render(request,"newsearchpage.html",{})
 
 def books(request):
@@ -92,7 +93,9 @@ def Uniform(request):
     return render(request,'AddUniform.html',{'new':new})
 
 def UniCard(request):
-    return render(request,"uniformcards.html",{})
+    uniform = WorkShopUniForm.objects.all()
+    calculator = Calc.objects.all()
+    return render(request,"uniformcards.html",{'uniform':uniform,'calculator':calculator})
 
 def FileForm(request):
     new = AddFile(request.POST,request.FILES)
@@ -102,5 +105,6 @@ def FileForm(request):
 
     return render(request,"FileForm.html",{'new':new})
 
-def ShowFileFolder(request):
-    return render(request,"FileFolder.html",{})
+def ShowFileFolder(request,branch):
+    files = File.objects.all()
+    return render(request,"FileFolder.html",{'branch':branch,'files':files})
