@@ -68,7 +68,12 @@ def NewSearch(request):
 def sellerDashBoard(request):
     current_user = UserPersonalInfo.objects.get(username = request.user)
     current_user_books =  NewBook.objects.filter(BookOwner = current_user)
-    return render(request,"sellerdashboard.html",{'books':current_user_books})
+    current_user_calc = Calc.objects.filter(CalcOwner = current_user)
+    if request.method == 'POST':
+        soldBook = request.POST.get('sold')
+        NewBook.objects.get(pk=soldBook).delete()
+
+    return render(request,"sellerdashboard.html",{'books':current_user_books,'current_user_calc':current_user_calc})
 
 
 def CalcForm(request):
