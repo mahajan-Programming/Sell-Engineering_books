@@ -88,7 +88,9 @@ class File(models.Model):
             ('MCQ','MCQ'),
             ('Q-paper','Q-paper'),
             ('Notes','Notes'),
-            ('Other','Other')
+            ('Decode','Decode'),
+            ('Other','Other'),
+
         )
     unit = (
         ('None','None'),
