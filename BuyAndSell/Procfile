@@ -1,1 +1,1 @@
-web: gunicorn BuyAndSell.BuyAndSell.wsgi --log-file -
+web: gunicorn BuyAndSell.wsgi --log-file -
